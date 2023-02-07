@@ -1,0 +1,27 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+    Cursos 
+
+{% endblock %}
+
+{% block descripcion %}
+
+    LOS MEJORES CURSOS A TU ALCANCE.
+
+<form action="" method="POST"> {% csrf_token %}
+
+        <table>
+
+            {{form1.as_table}}
+
+        </table>
+
+        <input type="submit" value="Enviar">
+
+</form>
+
+{% endblock %}
