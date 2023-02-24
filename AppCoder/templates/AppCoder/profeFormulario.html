@@ -7,9 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-
     
+    <form action="" method="POST"> {% csrf_token %}
 
+        <table>
+
+            {{miFormulario.as_table}}
+
+        </table>
+
+        <input type="submit" value="Enviar">
+
+    </form>
 
 </body>
 </html>

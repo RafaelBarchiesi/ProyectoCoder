@@ -34,6 +34,32 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Estudiantes' %}">Estudiantes</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Profesores' %}">Profesores</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Entregables' %}">Entregables</a></li>
+
+                        {% if request.user.is_authenticated %}
+
+                        <p style="color: white"> Hola {{user.first_name}} {{user.last_name}}</p>
+
+                        {% with user.avatar_set.first as miAvatar %}
+
+                        {% if miAvatar %}
+
+                        <img src="{{miAvatar.imagen.url}}" alt="No encontró la imagen" style="max-width: 30px;">
+
+                        {% endif %}
+
+                        {% endwith %}
+
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'EditarUsuario' %}">Editar Usuario</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'LogOut' %}">Cerrar Sesión</a></li>
+                        
+                        {% else %}
+                        
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'SingUp' %}">Registrarse</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'LogIn' %}">Iniciar Sesión</a></li>
+                       
+                        {% endif %}
+
+
                         
                     </ul>
                 </div>
@@ -68,6 +94,11 @@
                 </p>
             </div>
         </header>
+        
+        {% block formulario %}
+
+        {% endblock %}
+
         <!-- Portfolio Section-->
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
